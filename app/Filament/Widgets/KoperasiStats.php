@@ -91,12 +91,12 @@ class KoperasiStats extends BaseWidget
                 ->color('warning'),
 
             Stat::make('Data Peminjam', number_format($jumlahPeminjam, 0, ',', '.'))
-                ->description('Jumlah peminjam di bulan ' . $this->getMonthName($month) . ' tahun ' . $year)
+                ->description('Periode: ' . $this->getMonthName($month) . ' ' . $year)
                 ->descriptionIcon('heroicon-m-users')
                 ->color('danger'),
 
             Stat::make('Anggota Resign', number_format($resignBulanIni, 0, ',', '.'))
-                ->description('Jumlah anggota resign di bulan ' . $this->getMonthName($month) . ' tahun ' . $year)
+                ->description('Periode: ' . $this->getMonthName($month) . ' ' . $year)
                 ->descriptionIcon('heroicon-m-user-minus')
                 ->color('gray'),
         ];
