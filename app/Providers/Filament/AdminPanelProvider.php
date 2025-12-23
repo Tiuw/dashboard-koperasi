@@ -13,6 +13,7 @@ use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
 use App\Filament\Pages\Dashboard;
 use App\Filament\Widgets\KoperasiStats;
+use App\Filament\Widgets\KoperasiStatsYearly;
 use App\Filament\Widgets\KoperasiChart;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -38,6 +39,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\Filament\Admin\Widgets')
             ->widgets([
+                KoperasiStatsYearly::class,
                 KoperasiStats::class,
                 KoperasiChart::class,
                 // AccountWidget::class,
