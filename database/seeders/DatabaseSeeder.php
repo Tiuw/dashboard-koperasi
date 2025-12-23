@@ -70,7 +70,10 @@ class DatabaseSeeder extends Seeder
 
         $membersToResign = $activeMembers->random(min($resignCount, $activeMembers->count()));
         foreach ($membersToResign as $member) {
-            $member->update(['aktif' => 'N']);
+            $member->update([
+                'aktif' => 'N',
+                'tanggal_keluar' => now()->subDays(rand(1, 180)) // Random resignation date within last 6 months
+            ]);
         }
     }
 }

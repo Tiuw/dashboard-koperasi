@@ -15,6 +15,6 @@ class Anggota extends Model
     protected $fillable = [
         'nama', 'identitas', 'jk', 'tmp_lahir', 'tgl_lahir',
         'status', 'agama', 'pekerjaan', 'alamat', 'kota',
-        'notelp', 'tgl_daftar', 'jabatan_id', 'aktif', 'pass_word','departement','file_pic'
+        'notelp', 'tgl_daftar', 'jabatan_id', 'aktif', 'tanggal_keluar', 'pass_word','departement','file_pic'
     ];
 }

@@ -24,6 +24,7 @@ class KoperasiChart extends ChartWidget
         $simpananData = [];
         $anggotaData = [];
         $peminjamData = [];
+        $resignData = [];
 
         for ($month = 1; $month <= 12; $month++) {
             // Total Pinjaman per bulan
@@ -51,6 +52,12 @@ class KoperasiChart extends ChartWidget
                 ->whereMonth('tgl_pinjam', $month)
                 ->distinct('anggota_id')
                 ->count('anggota_id');
+
+            // Jumlah Anggota yang Resign per bulan
+            $resignData[] = Anggota::where('aktif', 'N')
+                ->whereYear('tanggal_keluar', $year)
+                ->whereMonth('tanggal_keluar', $month)
+                ->count();
         }
 
         return [
@@ -85,6 +92,15 @@ class KoperasiChart extends ChartWidget
                     'data' => $peminjamData,
                     'backgroundColor' => 'rgba(239, 68, 68, 0.5)',
                     'borderColor' => 'rgb(239, 68, 68)',
+                    'yAxisID' => 'y1',
+                    'type' => 'line',
+                    'tension' => 0.4,
+                ],
+                [
+                    'label' => 'Anggota Resign',
+                    'data' => $resignData,
+                    'backgroundColor' => 'rgba(168, 85, 247, 0.5)',
+                    'borderColor' => 'rgb(168, 85, 247)',
                     'yAxisID' => 'y1',
                     'type' => 'line',
                     'tension' => 0.4,
@@ -130,7 +146,7 @@ class KoperasiChart extends ChartWidget
 
     public function getHeading(): ?string
     {
-        return 'Grafik Pinjaman, Simpanan, Anggota & Peminjam per Bulan';
+        return 'Grafik Pinjaman, Simpanan, Anggota, Peminjam & Resign per Bulan';
     }
 
     public function getDescription(): ?string

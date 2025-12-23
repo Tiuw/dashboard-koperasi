@@ -62,6 +62,12 @@ class KoperasiStats extends BaseWidget
             ->distinct('anggota_id')
             ->count('anggota_id');
 
+        // Card 5: Data Anggota Resign (per bulan)
+        $resignBulanIni = Anggota::where('aktif', 'N')
+            ->whereYear('tanggal_keluar', $year)
+            ->whereMonth('tanggal_keluar', $month)
+            ->count();
+
         return [
             Stat::make('Total Pinjaman', 'Rp ' . number_format($totalPinjaman, 0, ',', '.'))
                 ->description('Periode: ' . $this->getMonthName($month) . ' ' . $year)
@@ -85,9 +91,14 @@ class KoperasiStats extends BaseWidget
                 ->color('warning'),
 
             Stat::make('Data Peminjam', number_format($jumlahPeminjam, 0, ',', '.'))
-                ->description('Jumlah peminjam di bulan ' . $this->getMonthName($month) . ' ' . $year)
+                ->description('Jumlah peminjam di bulan ' . $this->getMonthName($month) . ' tahun ' . $year)
                 ->descriptionIcon('heroicon-m-users')
                 ->color('danger'),
+
+            Stat::make('Anggota Resign', number_format($resignBulanIni, 0, ',', '.'))
+                ->description('Jumlah anggota resign di bulan ' . $this->getMonthName($month) . ' tahun ' . $year)
+                ->descriptionIcon('heroicon-m-user-minus')
+                ->color('gray'),
         ];
     }
 
