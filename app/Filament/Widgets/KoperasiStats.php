@@ -74,7 +74,7 @@ class KoperasiStats extends BaseWidget
                 ->descriptionIcon('heroicon-m-banknotes')
                 ->color('success'),
 
-            Stat::make('Total Simpanan', 'Rp ' . number_format($totalSimpanan, 0, ',', '.'))
+            Stat::make('Total Simpanan Bulan ' . $this->getMonthName($month) . ' ' . $year, 'Rp ' . number_format($totalSimpanan, 0, ',', '.'))
                 ->description(
                     'Pokok: Rp ' . number_format($simpananPokok, 0, ',', '.') . ' | ' .
                     'Wajib: Rp ' . number_format($simpananWajib, 0, ',', '.') . ' | ' .
@@ -83,7 +83,7 @@ class KoperasiStats extends BaseWidget
                 ->descriptionIcon('heroicon-m-currency-dollar')
                 ->color('info'),
 
-            Stat::make('Data Anggota Aktif', number_format($totalAnggotaAktif, 0, ',', '.'))
+            Stat::make('Data Anggota Aktif Bulan ' . $this->getMonthName($month) . ' ' . $year, number_format($totalAnggotaAktif, 0, ',', '.'))
                 ->description(
                     $jumlahAnggota . ' Anggota, ' . $jumlahPengurus . ' Pengurus'
                 )

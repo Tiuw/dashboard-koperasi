@@ -74,7 +74,7 @@ class KoperasiStatsYearly extends BaseWidget
             ->count();
 
         return [
-            Stat::make('Total Pinjaman Tahunan', 'Rp ' . number_format($totalPinjaman, 0, ',', '.'))
+            Stat::make('Total Pinjaman Tahun ' . $year, 'Rp ' . number_format($totalPinjaman, 0, ',', '.'))
                 ->description(
                     $perubahanPinjaman >= 0
                         ? number_format(abs($perubahanPinjaman), 1) . '% naik dari tahun lalu'
@@ -84,7 +84,7 @@ class KoperasiStatsYearly extends BaseWidget
                 ->color($perubahanPinjaman >= 0 ? 'success' : 'danger')
                 ->chart(array_fill(0, 12, rand(50, 100))),
 
-            Stat::make('Total Simpanan Tahunan', 'Rp ' . number_format($totalSimpanan, 0, ',', '.'))
+            Stat::make('Total Simpanan Tahun ' . $year, 'Rp ' . number_format($totalSimpanan, 0, ',', '.'))
                 ->description(
                     $perubahanSimpanan >= 0
                         ? number_format(abs($perubahanSimpanan), 1) . '% naik dari tahun lalu'
