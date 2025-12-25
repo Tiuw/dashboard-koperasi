@@ -9,7 +9,7 @@ use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 
-class KoperasiStats extends BaseWidget
+class KoperasiStatsMonthly extends BaseWidget
 {
     use InteractsWithPageFilters;
 

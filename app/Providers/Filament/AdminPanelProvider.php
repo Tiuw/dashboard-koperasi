@@ -12,9 +12,10 @@ use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
 use App\Filament\Pages\Dashboard;
-use App\Filament\Widgets\KoperasiStats;
+use App\Filament\Widgets\KoperasiStatsMonthly;
 use App\Filament\Widgets\KoperasiStatsYearly;
 use App\Filament\Widgets\KoperasiChart;
+use App\Filament\Widgets\AnggotaResignTable;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -40,8 +41,9 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\Filament\Admin\Widgets')
             ->widgets([
                 KoperasiStatsYearly::class,
-                KoperasiStats::class,
+                KoperasiStatsMonthly::class,
                 KoperasiChart::class,
+                AnggotaResignTable::class,
                 // AccountWidget::class,
                 // FilamentInfoWidget::class,
             ])
