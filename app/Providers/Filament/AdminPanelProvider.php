@@ -29,7 +29,9 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel ->default()
             ->id('admin')
-            ->path('admin')->login()
+            ->path('admin')
+            ->login()
+            ->brandName('Koperasi Tunas Sejahtera Mandiri')
             ->colors([
                 'primary' => Color::Amber,
             ])

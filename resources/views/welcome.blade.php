@@ -177,10 +177,7 @@
     <div class="shape shape3"></div>
 
     <div class="login-container">
-        <div class="logo">
-            <span class="logo-text">K</span>
-        </div>
-        <h1>Koperasi TSM</h1>
+        <h1>Koperasi Tunas Sejahtera Mandiri</h1>
         <p class="subtitle">Sistem Manajemen Koperasi Digital</p>
         <a href="{{ url('/admin') }}" class="btn-login">Masuk ke Dashboard</a>
         <p class="footer-text">&copy; {{ date('Y') }} Koperasi TSM</p>
