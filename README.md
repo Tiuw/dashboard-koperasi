@@ -208,38 +208,24 @@ app/Filament/
 - **Read**: Lihat daftar anggota dengan search dan filter
 - **Update**: Edit data anggota existing
 - **Delete**: Hapus anggota (dengan soft delete)
-- **Export**: Export data ke Excel/CSV
-- **Import**: Import data anggota bulk
 
 #### Manajemen Simpanan
-- Catat transaksi simpanan (wajib, pokok, sukarela)
-- Lihat history simpanan per anggota
-- Filter berdasarkan tanggal dan jenis simpanan
-- Laporan total simpanan
+- **Create**: Tambah Simpanan baru dengan form lengkap
+- **Read**: Lihat daftar Simpanan dengan search dan filter
+- **Update**: Edit data Simpanan existing
+- **Delete**: Hapus Simpanan (dengan soft delete)
 
 #### Manajemen Pinjaman
-- Ajukan pinjaman baru
-- Tracking status pinjaman (pending, approved, rejected)
-- Catat pembayaran angsuran
-- Kalkulasi otomatis bunga dan cicilan
-- Notifikasi pembayaran jatuh tempo
+- **Create**: Tambah Pinjaman baru dengan form lengkap
+- **Read**: Lihat daftar Pinjaman dengan search dan filter
+- **Update**: Edit data Pinjaman existing
+- **Delete**: Hapus Pinjaman (dengan soft delete)
 
 ### Navigasi Cepat
 
 - **Pencarian Global**: Tekan `Ctrl+K` atau `Cmd+K`
 - **Dark Mode**: Toggle di pojok kanan atas
 - **Profile Menu**: Akses pengaturan akun dan logout
-- **Breadcrumbs**: Navigasi cepat antar halaman
-
-## 🧪 Testing
-
-```bash
-# Jalankan semua test
-php artisan test
-
-# Atau menggunakan PHPUnit
-vendor/bin/phpunit
-```
 
 ## 📝 Development
 
