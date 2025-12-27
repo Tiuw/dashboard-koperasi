@@ -7,6 +7,7 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Schema;
 
 class AnggotaForm
@@ -53,8 +54,14 @@ class AnggotaForm
                 DatePicker::make('tanggal_keluar'),
                 TextInput::make('pass_word')
                     ->required(),
-                TextInput::make('file_pic')
-                    ->required(),
+                FileUpload::make('file_pic')
+                    ->label('Photo')
+                    ->image()
+                    ->directory('anggota-photos')
+                    ->visibility('public')
+                    ->maxSize(5120)
+                    ->imagePreviewHeight('250')
+                    ->columnSpanFull(),
                 TextInput::make('password2')
                     ->password(),
                 DateTimePicker::make('tanggal_update')

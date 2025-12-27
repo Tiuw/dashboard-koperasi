@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 
 class AnggotasTable
@@ -48,8 +49,11 @@ class AnggotasTable
                     ->sortable(),
                 TextColumn::make('pass_word')
                     ->searchable(),
-                TextColumn::make('file_pic')
-                    ->searchable(),
+                ImageColumn::make('file_pic')
+                    ->label('Photo')
+                    ->circular()
+                    ->size(60)
+                    ->defaultImageUrl(url('/images/default-avatar.png')),
                 TextColumn::make('tanggal_update')
                     ->dateTime()
                     ->sortable(),
