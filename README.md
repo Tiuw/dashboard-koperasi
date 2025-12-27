@@ -60,16 +60,7 @@ php artisan key:generate
 
 ### 4. Konfigurasi Database
 
-Edit file `.env` dan sesuaikan konfigurasi database:
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=dashboard_koperasi
-DB_USERNAME=root
-DB_PASSWORD=
-```
+Edit file `.env` dan sesuaikan konfigurasi database sesuai dengan environment Anda.
 
 ### 5. Import Database
 
@@ -109,14 +100,9 @@ php artisan serve
 
 Akses aplikasi di `http://localhost:8000`
 
-## 👤 Default User
+## 👤 Login Admin
 
-Setelah seeding, gunakan kredensial berikut untuk login:
-
-- **Email**: admin@example.com
-- **Password**: password
-
-> ⚠️ Ubah kredensial default ini setelah login pertama kali!
+Setelah seeding, Anda dapat login menggunakan kredensial yang telah dibuat. Pastikan untuk mengubah password default setelah login pertama kali untuk keamanan.
 
 ## 📁 Struktur Project
 
