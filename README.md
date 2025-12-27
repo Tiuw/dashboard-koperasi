@@ -129,59 +129,6 @@ app/Filament/
 └── Widgets/            # Dashboard widgets
 ```
 
-### Membuat Resource Baru
-
-```bash
-# Buat resource lengkap dengan form & table
-php artisan make:filament-resource NamaModel
-
-# Dengan generate otomatis
-php artisan make:filament-resource NamaModel --generate
-
-# Dengan view page
-php artisan make:filament-resource NamaModel --view
-```
-
-### Membuat Custom Page
-
-```bash
-# Page biasa
-php artisan make:filament-page NamaPage
-
-# Page dengan resource
-php artisan make:filament-page ManageSettings --resource=SettingResource --type=ManageRecords
-```
-
-### Membuat Widget
-
-```bash
-# Stats widget
-php artisan make:filament-widget StatsOverview --stats-overview
-
-# Chart widget
-php artisan make:filament-widget BlogPostsChart --chart
-
-# Table widget
-php artisan make:filament-widget LatestOrders --table
-```
-
-### Konfigurasi Panel
-
-Panel Filament dikonfigurasi di `app/Providers/Filament/AdminPanelProvider.php`:
-
-```php
-$panel
-    ->id('admin')
-    ->path('admin')
-    ->login()
-    ->colors([
-        'primary' => Color::Amber,
-    ])
-    ->discoverResources()
-    ->discoverPages()
-    ->discoverWidgets();
-```
-
 ### Fitur Filament Yang Digunakan
 
 - **Resources**: CRUD management untuk Anggota, Simpanan, dan Pinjaman
