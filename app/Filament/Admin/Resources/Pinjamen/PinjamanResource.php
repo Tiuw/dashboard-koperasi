@@ -40,12 +40,18 @@ class PinjamanResource extends Resource
             ->components([
                 DateTimePicker::make('tgl_pinjam')
                     ->required(),
-                TextInput::make('anggota_id')
+                Select::make('anggota_id')
+                    ->relationship('anggota', 'nama')
+                    ->searchable()
+                    ->preload()
                     ->required()
-                    ->numeric(),
-                TextInput::make('barang_id')
+                    ->label('Nama Anggota'),
+                Select::make('barang_id')
+                    ->relationship('barang', 'nm_barang')
+                    ->searchable()
+                    ->preload()
                     ->required()
-                    ->numeric(),
+                    ->label('Nama Barang'),
                 TextInput::make('lama_angsuran')
                     ->required()
                     ->numeric(),
@@ -71,12 +77,20 @@ class PinjamanResource extends Resource
                 Select::make('dk')
                     ->options(['D' => 'D', 'K' => 'K'])
                     ->required(),
-                TextInput::make('kas_id')
+                Select::make('kas_id')
+                    ->relationship('kas', 'nama_kas')
+                    ->searchable()
+                    ->preload()
                     ->required()
-                    ->numeric(),
-                TextInput::make('jns_trans')
+                    ->label('Kas'),
+                Select::make('jns_trans')
+                    ->options([
+                        1 => 'Pinjaman',
+                        2 => 'Pelunasan Pinjaman',
+                        3 => 'Setoran Simpanan',
+                    ])
                     ->required()
-                    ->numeric(),
+                    ->label('Jenis Transaksi'),
                 DateTimePicker::make('update_data'),
                 TextInput::make('user_name')
                     ->required(),
@@ -95,11 +109,13 @@ class PinjamanResource extends Resource
                 TextColumn::make('tgl_pinjam')
                     ->dateTime()
                     ->sortable(),
-                TextColumn::make('anggota_id')
-                    ->numeric()
+                TextColumn::make('anggota.nama')
+                    ->label('Nama Anggota')
+                    ->searchable()
                     ->sortable(),
-                TextColumn::make('barang_id')
-                    ->numeric()
+                TextColumn::make('barang.nm_barang')
+                    ->label('Nama Barang')
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('lama_angsuran')
                     ->numeric()
@@ -121,11 +137,18 @@ class PinjamanResource extends Resource
                     ->sortable(),
                 TextColumn::make('lunas'),
                 TextColumn::make('dk'),
-                TextColumn::make('kas_id')
-                    ->numeric()
+                TextColumn::make('kas.nama_kas')
+                    ->label('Kas')
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('jns_trans')
-                    ->numeric()
+                    ->label('Jenis Transaksi')
+                    ->formatStateUsing(fn ($state) => match($state) {
+                        1 => 'Pinjaman',
+                        2 => 'Pelunasan Pinjaman',
+                        3 => 'Setoran Simpanan',
+                        default => $state
+                    })
                     ->sortable(),
                 TextColumn::make('update_data')
                     ->dateTime()

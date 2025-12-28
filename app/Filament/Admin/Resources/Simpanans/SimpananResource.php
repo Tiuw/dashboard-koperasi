@@ -40,12 +40,18 @@ class SimpananResource extends Resource
             ->components([
                 DateTimePicker::make('tgl_transaksi')
                     ->required(),
-                TextInput::make('anggota_id')
+                Select::make('anggota_id')
+                    ->relationship('anggota', 'nama')
+                    ->searchable()
+                    ->preload()
                     ->required()
-                    ->numeric(),
-                TextInput::make('jenis_id')
+                    ->label('Nama Anggota'),
+                Select::make('jenis_id')
+                    ->relationship('jenis', 'nama_jenis')
+                    ->searchable()
+                    ->preload()
                     ->required()
-                    ->numeric(),
+                    ->label('Jenis Simpanan'),
                 TextInput::make('jumlah')
                     ->required()
                     ->numeric(),
@@ -57,9 +63,12 @@ class SimpananResource extends Resource
                 Select::make('dk')
                     ->options(['D' => 'D', 'K' => 'K'])
                     ->required(),
-                TextInput::make('kas_id')
+                Select::make('kas_id')
+                    ->relationship('kas', 'nama_kas')
+                    ->searchable()
+                    ->preload()
                     ->required()
-                    ->numeric(),
+                    ->label('Kas'),
                 DateTimePicker::make('update_data'),
                 TextInput::make('user_name')
                     ->required(),
@@ -80,11 +89,13 @@ class SimpananResource extends Resource
                 TextColumn::make('tgl_transaksi')
                     ->dateTime()
                     ->sortable(),
-                TextColumn::make('anggota_id')
-                    ->numeric()
+                TextColumn::make('anggota.nama')
+                    ->label('Nama Anggota')
+                    ->searchable()
                     ->sortable(),
-                TextColumn::make('jenis_id')
-                    ->numeric()
+                TextColumn::make('jenis.nama_jenis')
+                    ->label('Jenis Simpanan')
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('jumlah')
                     ->numeric()
@@ -93,8 +104,9 @@ class SimpananResource extends Resource
                     ->searchable(),
                 TextColumn::make('akun'),
                 TextColumn::make('dk'),
-                TextColumn::make('kas_id')
-                    ->numeric()
+                TextColumn::make('kas.nama_kas')
+                    ->label('Kas')
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('update_data')
                     ->dateTime()

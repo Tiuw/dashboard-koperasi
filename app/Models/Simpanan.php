@@ -16,4 +16,19 @@ class Simpanan extends Model
         'tgl_transaksi', 'anggota_id', 'jenis_id', 'jumlah',
         'keterangan', 'akun', 'dk', 'kas_id', 'user_name','nama_penyetor','no_identitas','alamat'
     ];
+
+    public function anggota()
+    {
+        return $this->belongsTo(Anggota::class, 'anggota_id');
+    }
+
+    public function jenis()
+    {
+        return $this->belongsTo(Jenis::class, 'jenis_id');
+    }
+
+    public function kas()
+    {
+        return $this->belongsTo(Kas::class, 'kas_id');
+    }
 }
